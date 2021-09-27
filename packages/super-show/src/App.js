@@ -1,6 +1,8 @@
-import { Banner } from "super-template";
+import React from 'react';
+import { Button } from "super-template/build/bundle";
+
 const App = () => {
-  return <div><Banner/></div>;
+  return <Button></Button>;
 };
 
 export default App;

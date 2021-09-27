@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import EditorLeft from './component/editorLeft';
+import EditorLeft from './container/editorLeft';
 
 import './index.less';
 interface EditorContainerProps {}

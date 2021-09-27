@@ -1,6 +1,8 @@
 const Dialog = () => {
     return ( 
-        <div>弹框组件</div>
+        <div>
+            dialog
+        </div>
      );
 }
  

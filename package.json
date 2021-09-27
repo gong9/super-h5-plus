@@ -5,12 +5,19 @@
     "packages/*"
   ],
   "devDependencies": {
-    "lerna": "^4.0.0"
+    "lerna": "^4.0.0",
+    "npm-run-all": "^4.1.5"
   },
   "scripts": {
     "start": "npm-run-all --parallel dev:*",
     "dev:editor": "cd ./packages/super-editor && npm run start",
-    "dev:template": "cd ./packages/super-template && npm run start"
-   
+    "dev:template": "cd ./packages/super-template && npm run build",
+    "dev:show": "cd ./packages/super-show && npm run start"
+  },
+  "dependencies": {
+    "@babel/core": "^7.15.5",
+    "@babel/plugin-transform-runtime": "^7.15.0",
+    "@babel/preset-env": "^7.15.6",
+    "core-js": "^3.18.1"
   }
 }
