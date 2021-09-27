@@ -1,5 +1,6 @@
 import { FC } from 'react';
 import EditorLeft from './container/editorLeft';
+import PreView from './container/preview';
 
 import './index.less';
 interface EditorContainerProps {}
@@ -12,7 +13,9 @@ const EditorContainer: FC<EditorContainerProps> = () => {
         <div className="editor-body-left">
           <EditorLeft />
         </div>
-        <div className="editor-body-center">预览区</div>
+        <div className="editor-body-center">
+          <PreView/>
+        </div>
         <div className="editor-body-right">配置区</div>
       </div>
     </div>

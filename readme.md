@@ -16,3 +16,6 @@
 
 到我这就是完全是
 editor和show项目之间的通信问题
+
+预览地址
+http://localhost:8000/index

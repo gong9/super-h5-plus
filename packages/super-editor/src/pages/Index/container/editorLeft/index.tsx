@@ -1,19 +1,23 @@
-/**
- * 编辑左侧 组件选区
- */
-
 import { FC } from 'react';
 import { Collapse } from 'antd';
+import './index.less'
 interface EditorLeftProps {}
 
 const { Panel } = Collapse;
+
 const EditorLeft: FC<EditorLeftProps> = () => {
   const callback = () => {
     console.log(1111);
   };
+
   return (
     <div className="editor-left">
-      <Collapse defaultActiveKey={['1']} onChange={callback}>
+      <Collapse
+        className="Collapse"
+        defaultActiveKey={['1']}
+        onChange={callback}
+        ghost={true}
+      >
         <Panel header="组件1" key="1">
           <div>这是组件1</div>
         </Panel>
