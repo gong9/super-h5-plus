@@ -1,0 +1,19 @@
+{
+    "eslint.workingDirectories": [
+      {
+        "mode": "location"
+      }
+    ],
+    "eslint.format.enable": true,
+    "eslint.packageManager": "yarn",
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": true
+    },
+    "vetur.validation.template": false,
+    "editor.formatOnType": true,
+    "editor.formatOnPaste": true,
+    "editor.formatOnSave": true,
+    "eslint.alwaysShowStatus": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
+  

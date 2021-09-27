@@ -1,0 +1,16 @@
+
+# dependencies
+node_modules
+yarn-error.log
+package-lock.json
+
+# production
+dist
+test.js
+# misc
+.DS_Store
+lerna-debug.log
+
+# editor
+.idea
+

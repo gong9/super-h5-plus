@@ -1,0 +1,14 @@
+{
+  "packages": ["packages/*"],
+  "command": {
+    "publish": {
+      "registry": "",
+      "bootstrap": {
+        "hoist": true
+      }
+    }
+  },
+  "useWorkspaces": true,
+  "npmClient": "yarn",
+  "version": "0.0.1"
+}

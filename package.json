@@ -1,0 +1,15 @@
+{
+  "name": "super-h5",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "devDependencies": {
+    "lerna": "^4.0.0"
+  },
+  "scripts": {
+    "start": "npm-run-all --parallel dev:*",
+    "dev:editor": "cd ./packages/super-editor && npm run start",
+    "dev:template": "cd ./packages/super-template && npm run start"
+  }
+}
