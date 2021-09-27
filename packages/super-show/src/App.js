@@ -1,9 +1,6 @@
+import { Banner } from "super-template";
 const App = () => {
-  return ( 
-    <div>
-      预览项目 - 负责解析json生成h5页面
-    </div>
-   );
-}
- 
+  return <div><Banner/></div>;
+};
+
 export default App;

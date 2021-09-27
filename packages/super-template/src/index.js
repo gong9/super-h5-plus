@@ -1,6 +1,7 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import "./index.css";
-import App from "./App";
+import Banner from "./components/banner";
+import Dialogg from "./components/Dialog";
 
-ReactDOM.render(<App />, document.getElementById("root"));
+export{
+  Banner,
+  Dialogg
+}

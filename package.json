@@ -11,5 +11,6 @@
     "start": "npm-run-all --parallel dev:*",
     "dev:editor": "cd ./packages/super-editor && npm run start",
     "dev:template": "cd ./packages/super-template && npm run start"
+   
   }
 }
