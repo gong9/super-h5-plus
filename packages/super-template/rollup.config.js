@@ -1,4 +1,5 @@
 import babel from 'rollup-plugin-babel'
+import less from 'rollup-plugin-less'
 
 export default {
     input: './src/index.js',
@@ -6,6 +7,12 @@ export default {
         file: './build/bundle.js',
         format: 'cjs'
     },
-    plugins: [babel()],
+    plugins: [
+        babel(),
+        less({
+
+            output: 'build/main.css',
+        }),
+    ],
     external: ['react'],
 };

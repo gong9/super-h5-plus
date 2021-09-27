@@ -1,7 +1,8 @@
 import React from 'react';
+import './index.less'
 const Button = () => {
     return ( 
-        <div>来自组件库的按钮</div>
+        <div className='btn'>来自组件库的按钮11</div>
      );
 }
  
