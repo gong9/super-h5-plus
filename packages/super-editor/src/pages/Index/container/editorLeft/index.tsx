@@ -1,32 +1,39 @@
 import { FC } from 'react';
 import { Collapse } from 'antd';
-import './index.less'
-interface EditorLeftProps {}
+import './index.less';
 
+
+interface EditorLeftProps {
+  schameMap: ComJsonType[];
+}
+
+interface ComJsonType {
+  name: string;
+  description: string;
+  properties: unknown;
+}
 const { Panel } = Collapse;
 
-const EditorLeft: FC<EditorLeftProps> = () => {
-  const callback = () => {
-    console.log(1111);
-  };
+const EditorLeft: FC<EditorLeftProps> = (props) => {
+  // const callback = () => {
+  //   console.log(1111);
+  // };
 
   return (
     <div className="editor-left">
       <Collapse
         className="Collapse"
         defaultActiveKey={['1']}
-        onChange={callback}
+        // onChange={callback}
         ghost={true}
       >
-        <Panel header="组件1" key="1">
-          <div>这是组件1</div>
-        </Panel>
-        <Panel header="组件2" key="2">
-          <div>这是组件2</div>
-        </Panel>
-        <Panel header="组件3" key="3">
-          <div>这是组件3</div>
-        </Panel>
+        {props.schameMap.map((item: any) => {
+          return (
+            <Panel header={item.name} key={item.name}>
+              <div>{item.description}</div>
+            </Panel>
+          );
+        })}
       </Collapse>
     </div>
   );

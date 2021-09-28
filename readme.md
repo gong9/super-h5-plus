@@ -19,3 +19,13 @@ editor和show项目之间的通信问题
 
 预览地址
 http://localhost:8000/index
+
+项目中的一些思考。
+编辑器
+
+每个组件对应一份json文件，交给浏览器去修改
+
+
+### 难点
+
+1. 在rollup中怎么读取我的schma数据，
