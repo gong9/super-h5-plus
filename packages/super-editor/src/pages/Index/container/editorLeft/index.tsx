@@ -1,12 +1,11 @@
 import { FC } from 'react';
 import { Collapse } from 'antd';
+import Thumbnail from '../thumbnail';
 import './index.less';
-
 
 interface EditorLeftProps {
   schameMap: ComJsonType[];
 }
-
 interface ComJsonType {
   name: string;
   description: string;
@@ -15,10 +14,6 @@ interface ComJsonType {
 const { Panel } = Collapse;
 
 const EditorLeft: FC<EditorLeftProps> = (props) => {
-  // const callback = () => {
-  //   console.log(1111);
-  // };
-
   return (
     <div className="editor-left">
       <Collapse
@@ -30,7 +25,7 @@ const EditorLeft: FC<EditorLeftProps> = (props) => {
         {props.schameMap.map((item: any) => {
           return (
             <Panel header={item.name} key={item.name}>
-              <div>{item.description}</div>
+              <Thumbnail compInfo={item} />
             </Panel>
           );
         })}

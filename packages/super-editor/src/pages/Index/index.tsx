@@ -1,12 +1,21 @@
-import { FC } from 'react';
+//@ts-nocheck
+import { FC, useEffect } from 'react';
 import { schameMap } from 'super-template/build/bundle';
+import { DndProvider } from 'react-dnd';
+import { HTML5Backend } from 'react-dnd-html5-backend';
 import EditorLeft from './container/editorLeft';
 import PreView from './container/preview';
 
 import './index.less';
 interface EditorContainerProps {}
 
+const currentCacheCopm = [];
+
 const EditorContainer: FC<EditorContainerProps> = () => {
+  useEffect(() => {
+    //init data
+  });
+
   return (
     <div className="editor-container">
       <div className="editor-top">可视化编辑器——superH5</div>
@@ -23,4 +32,13 @@ const EditorContainer: FC<EditorContainerProps> = () => {
   );
 };
 
-export default EditorContainer;
+const Main = () => {
+  return (
+    <div className="main">
+      <DndProvider backend={HTML5Backend}>
+        <EditorContainer />
+      </DndProvider>
+    </div>
+  );
+};
+export default Main;

@@ -1,14 +1,23 @@
-import { FC, useState } from 'react';
+import { FC } from 'react';
+import { useDrop } from 'react-dnd';
+import './index.less';
 interface PreViewProps {}
 
 const PreView: FC<PreViewProps> = () => {
+  const [, drop] = useDrop({
+    accept: 'comp',
+  });
   return (
-    <iframe
-      src="http://localhost:3000/"
-      width="100%"
-      scrolling="no"
-      frameBorder="0"
-    ></iframe>
+    <div className="preview" ref={drop}>
+      <div className="clone-iframe"></div>
+      <iframe
+        src="http://localhost:3000/"
+        width="100%"
+        scrolling="no"
+        frameBorder="0"
+        id="preview"
+      ></iframe>
+    </div>
   );
 };
 
