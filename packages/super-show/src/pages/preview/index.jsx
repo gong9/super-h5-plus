@@ -1,18 +1,20 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Button } from "super-template/build/bundle";
-
+let id = 0;
 const PreView = () => {
+  const [currentCacheCopm, setCurrentCacheCopm] = useState([]);
   useEffect(() => {
-    window.addEventListener("message", (event) => {
-      console.log("受到父亲信号");
-      console.log(event);
+    window.addEventListener("message", ({ data }) => {
+      setCurrentCacheCopm(data);
     });
-    window.parent.postMessage({ height: "65px", "z-index": "100" }, "*");
   });
-
+  console.log(currentCacheCopm);
   return (
     <div>
-      <Button />
+      {setCurrentCacheCopm.length > 0 &&
+        currentCacheCopm.map((comp) => {
+          return <div key={id++}>{comp.description}</div>;
+        })}
     </div>
   );
 };
