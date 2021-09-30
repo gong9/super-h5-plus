@@ -1,7 +1,7 @@
 import { FC, useEffect } from 'react';
 import { DragSourceMonitor, useDrag } from 'react-dnd';
 import { ComJsonType } from '../editorLeft';
-import './index.less'
+import './index.less';
 
 interface ThumbnailProps {
   compInfo: ComJsonType;
@@ -37,7 +37,6 @@ const Thumbnail: FC<ThumbnailProps> = ({
         } else {
           currentCacheCopm.splice(occupantsIndex, 1);
         }
-
         setCurrentCacheCopm([...currentCacheCopm]);
       },
     },

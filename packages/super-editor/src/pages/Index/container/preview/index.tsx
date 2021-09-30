@@ -1,29 +1,35 @@
 import { FC } from 'react';
 import { useDrop } from 'react-dnd';
+import Drop from './Drop';
 import './index.less';
 import { ComJsonType } from '../editorLeft';
 interface PreViewProps {
   currentCacheCopm: ComJsonType[];
+  setCurrentCacheCopm: Function;
 }
 
 let compNum = 0;
-const PreView: FC<PreViewProps> = ({ currentCacheCopm }) => {
+const PreView: FC<PreViewProps> = ({
+  currentCacheCopm,
+  setCurrentCacheCopm,
+}) => {
   const [, drop] = useDrop({
     accept: 'comp',
-    hover: (item, monitor) => {
-      // 拖拽时的让位处理
-    },
   });
 
   return (
     <div className="preview" ref={drop}>
       <div className="clone-iframe">
-        {currentCacheCopm.map((compInfo) => {
+        {currentCacheCopm.map((compInfo, index) => {
           return (
             // 因为会存在渲染相同组件的情况，故这里放弃diff优化
-            <div key={++compNum} className={compInfo.name}>
-              {compInfo.description}
-            </div>
+            <Drop
+              currentCacheCopm={currentCacheCopm}
+              setCurrentCacheCopm={setCurrentCacheCopm}
+              key={++compNum}
+              index={index}
+              compInfo={compInfo}
+            />
           );
         })}
       </div>

@@ -15,7 +15,7 @@ const EditorContainer: FC<EditorContainerProps> = () => {
   useEffect(() => {
     //init data
   });
-  
+
   return (
     <div className="editor-container">
       <div className="editor-top">可视化编辑器——superH5</div>
@@ -28,7 +28,10 @@ const EditorContainer: FC<EditorContainerProps> = () => {
           />
         </div>
         <div className="editor-body-center">
-          <PreView currentCacheCopm={currentCacheCopm} />
+          <PreView
+            currentCacheCopm={currentCacheCopm}
+            setCurrentCacheCopm={setCurrentCacheCopm}
+          />
         </div>
         <div className="editor-body-right">配置区</div>
       </div>
