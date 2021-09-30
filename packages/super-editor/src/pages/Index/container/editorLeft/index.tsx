@@ -5,15 +5,21 @@ import './index.less';
 
 interface EditorLeftProps {
   schameMap: ComJsonType[];
+  currentCacheCopm: ComJsonType[];
+  setCurrentCacheCopm: Function;
 }
-interface ComJsonType {
+export interface ComJsonType {
   name: string;
   description: string;
   properties: unknown;
 }
 const { Panel } = Collapse;
 
-const EditorLeft: FC<EditorLeftProps> = (props) => {
+const EditorLeft: FC<EditorLeftProps> = ({
+  schameMap,
+  currentCacheCopm,
+  setCurrentCacheCopm,
+}) => {
   return (
     <div className="editor-left">
       <Collapse
@@ -22,10 +28,14 @@ const EditorLeft: FC<EditorLeftProps> = (props) => {
         // onChange={callback}
         ghost={true}
       >
-        {props.schameMap.map((item: any) => {
+        {schameMap.map((item: any) => {
           return (
             <Panel header={item.name} key={item.name}>
-              <Thumbnail compInfo={item} />
+              <Thumbnail
+                currentCacheCopm={currentCacheCopm}
+                setCurrentCacheCopm={setCurrentCacheCopm}
+                compInfo={item}
+              />
             </Panel>
           );
         })}

@@ -1,5 +1,5 @@
 //@ts-nocheck
-import { FC, useEffect } from 'react';
+import { FC, useEffect, useState } from 'react';
 import { schameMap } from 'super-template/build/bundle';
 import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
@@ -9,22 +9,26 @@ import PreView from './container/preview';
 import './index.less';
 interface EditorContainerProps {}
 
-const currentCacheCopm = [];
-
 const EditorContainer: FC<EditorContainerProps> = () => {
+  const [currentCacheCopm, setCurrentCacheCopm] = useState([]);
+
   useEffect(() => {
     //init data
   });
-
+  
   return (
     <div className="editor-container">
       <div className="editor-top">可视化编辑器——superH5</div>
       <div className="editor-body">
         <div className="editor-body-left">
-          <EditorLeft schameMap={schameMap} />
+          <EditorLeft
+            schameMap={schameMap}
+            setCurrentCacheCopm={setCurrentCacheCopm}
+            currentCacheCopm={currentCacheCopm}
+          />
         </div>
         <div className="editor-body-center">
-          <PreView />
+          <PreView currentCacheCopm={currentCacheCopm} />
         </div>
         <div className="editor-body-right">配置区</div>
       </div>
