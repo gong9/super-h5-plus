@@ -12,6 +12,7 @@ export interface ComJsonType {
   name: string;
   description: string;
   properties: unknown;
+  pic: string;
 }
 const { Panel } = Collapse;
 

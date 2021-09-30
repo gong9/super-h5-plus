@@ -9,6 +9,7 @@ var React = _interopDefault(require('react'));
 var schema = {
   "name": "button",
   "description": "按钮组件",
+  "pic": "https://img12.360buyimg.com/ddimg/jfs/t1/206278/28/8822/54487/615539f5E4f4cb5ab/49773bdc89799e5c.png",
   "properties": {
     "type": "object",
     "properties": {
@@ -31,6 +32,7 @@ Button.schema = schema;
 var schema$1 = {
   "name": "dialog",
   "description": "弹窗组件",
+  "pic": "https://img11.360buyimg.com/ddimg/jfs/t1/97204/11/18195/74905/61553bb8E9ba92a0d/8d59c5db08ccd759.png",
   "properties": {
     "type": "object",
     "properties": {

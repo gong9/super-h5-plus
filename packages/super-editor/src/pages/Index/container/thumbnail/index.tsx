@@ -1,6 +1,7 @@
 import { FC, useEffect } from 'react';
 import { DragSourceMonitor, useDrag } from 'react-dnd';
 import { ComJsonType } from '../editorLeft';
+import './index.less'
 
 interface ThumbnailProps {
   compInfo: ComJsonType;
@@ -58,7 +59,11 @@ const Thumbnail: FC<ThumbnailProps> = ({
     }
   }, [isDragging]);
 
-  return <div ref={drag}>{compInfo.description}</div>;
+  return (
+    <div ref={drag}>
+      <img className="thum-preview" src={compInfo.pic} alt="组件缩略图" />
+    </div>
+  );
 };
 
 export default Thumbnail;
