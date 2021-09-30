@@ -1,6 +1,7 @@
 import { FC, useEffect, memo } from 'react';
 import { DragSourceMonitor, useDrag } from 'react-dnd';
 import { ComJsonType } from '../editorLeft';
+import eventbus from '@/util/eventbus';
 import './index.less';
 
 interface ThumbnailProps {
@@ -34,7 +35,11 @@ const Thumbnail: FC<ThumbnailProps> = ({
 
         if (monitor.didDrop()) {
           currentCacheCopm.splice(occupantsIndex, 1, item);
+          eventbus.emit('watchDragState', false);
+          //@ts-ignore
+          document.querySelector('#preview').contentWindow.postMessage(currentCacheCopm, '*');
         } else {
+          eventbus.emit('watchDragState', true);
           currentCacheCopm.splice(occupantsIndex, 1);
         }
         setCurrentCacheCopm([...currentCacheCopm]);
@@ -48,6 +53,7 @@ const Thumbnail: FC<ThumbnailProps> = ({
    */
   useEffect(() => {
     if (isDragging) {
+      eventbus.emit('watchDragState', true);
       setCurrentCacheCopm([
         {
           name: 'occupants',
