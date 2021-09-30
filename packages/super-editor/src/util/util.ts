@@ -3,7 +3,7 @@
 /**
  * 防抖
  */
-export const debounce = (fn, wait = 200) => {
+export const debounce = (fn, wait = 20) => {
   let timeout = null;
   return (...args) => {
     if (timeout) clearTimeout(timeout);
