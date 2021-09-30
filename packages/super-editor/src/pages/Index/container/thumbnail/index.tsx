@@ -33,8 +33,6 @@ const Thumbnail: FC<ThumbnailProps> = ({
         // 2. 没有放置目标容器中且拖拽结束，删除展位元素元素
 
         if (monitor.didDrop()) {
-          console.log('为什么放置不上呢');
-
           currentCacheCopm.splice(occupantsIndex, 1, item);
         } else {
           currentCacheCopm.splice(occupantsIndex, 1);

@@ -1,8 +1,10 @@
-//@ts-nocheck
 import { FC, useEffect, useState } from 'react';
-import { schameMap } from 'super-template/build/bundle';
 import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
+
+//@ts-ignore
+import { schameMap } from 'super-template/build/bundle';
+
 import EditorLeft from './container/editorLeft';
 import PreView from './container/preview';
 
@@ -11,10 +13,6 @@ interface EditorContainerProps {}
 
 const EditorContainer: FC<EditorContainerProps> = () => {
   const [currentCacheCopm, setCurrentCacheCopm] = useState([]);
-
-  useEffect(() => {
-    //init data
-  });
 
   return (
     <div className="editor-container">
