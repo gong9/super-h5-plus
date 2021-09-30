@@ -1,7 +1,6 @@
-import { FC, useRef } from 'react';
+import { FC, useRef, memo } from 'react';
 import { useDrop } from 'react-dnd';
 import { XYCoord } from 'dnd-core';
-import { debounce } from '../../../../util/util';
 import { ComJsonType } from '../editorLeft';
 import './index.less';
 
@@ -24,6 +23,7 @@ const Drop: FC<DropProps> = ({
       accept: 'comp',
       hover: (_, monitor) => {
         // 屏幕上矩形范围
+        //@ts-ignore
         const hoverBoundingRect = currentCompRef.current!.getBoundingClientRect();
         // 中点垂直坐标
         const hoverMiddleY =
@@ -39,8 +39,7 @@ const Drop: FC<DropProps> = ({
 
         // 向上拖动
         if (hoverClientY > hoverMiddleY + 30) {
-          // 随着hover移动占位
-          // 我想只有index变动了之后触发下面的逻辑
+          // 移动占位标签
           const occupantsIndex = currentCacheCopm.findIndex(
             (compItem) => compItem.name === 'occupants',
           );
@@ -53,7 +52,7 @@ const Drop: FC<DropProps> = ({
         }
       },
     },
-    [index],
+    [currentCacheCopm, setCurrentCacheCopm, index],
   );
 
   return (
@@ -65,4 +64,4 @@ const Drop: FC<DropProps> = ({
   );
 };
 
-export default Drop;
+export default memo(Drop);

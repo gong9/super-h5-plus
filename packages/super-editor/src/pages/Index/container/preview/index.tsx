@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, memo } from 'react';
 import { useDrop } from 'react-dnd';
 import Drop from './Drop';
 import './index.less';
@@ -45,4 +45,4 @@ const PreView: FC<PreViewProps> = ({
   );
 };
 
-export default PreView;
+export default memo(PreView);

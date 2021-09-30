@@ -10,7 +10,7 @@
 
 
 预览地址
-http://localhost:8000/index
+http://localhost:8000
 
 
 ### 难点

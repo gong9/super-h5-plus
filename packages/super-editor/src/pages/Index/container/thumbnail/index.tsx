@@ -1,4 +1,4 @@
-import { FC, useEffect } from 'react';
+import { FC, useEffect, memo } from 'react';
 import { DragSourceMonitor, useDrag } from 'react-dnd';
 import { ComJsonType } from '../editorLeft';
 import './index.less';
@@ -67,4 +67,4 @@ const Thumbnail: FC<ThumbnailProps> = ({
   );
 };
 
-export default Thumbnail;
+export default memo(Thumbnail);

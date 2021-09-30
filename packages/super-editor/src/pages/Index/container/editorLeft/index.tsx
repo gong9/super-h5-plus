@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, memo } from 'react';
 import { Collapse } from 'antd';
 import Thumbnail from '../thumbnail';
 import './index.less';
@@ -45,4 +45,4 @@ const EditorLeft: FC<EditorLeftProps> = ({
   );
 };
 
-export default EditorLeft;
+export default memo(EditorLeft);
