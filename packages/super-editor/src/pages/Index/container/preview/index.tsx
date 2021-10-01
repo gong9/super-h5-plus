@@ -1,4 +1,4 @@
-import { FC, memo, useState } from 'react';
+import { FC, memo, useState, useEffect } from 'react';
 import { useDrop } from 'react-dnd';
 import classnames from 'classnames';
 import Drop from './Drop';

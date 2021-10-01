@@ -14,6 +14,14 @@ interface EditorContainerProps {}
 const EditorContainer: FC<EditorContainerProps> = () => {
   const [currentCacheCopm, setCurrentCacheCopm] = useState([]);
 
+  useEffect(() => {
+    window.addEventListener('message', ({ data }) => {
+      setCurrentCacheCopm(data);
+      console.log(data);
+      
+    });
+  }, []);
+
   return (
     <div className="editor-container">
       <div className="editor-top">可视化编辑器——superH5</div>

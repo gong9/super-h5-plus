@@ -35,7 +35,7 @@ const Drop: FC<DropProps> = ({
           (clientOffset as XYCoord).y - hoverBoundingRect.top;
 
         // 向下拖动
-        if (hoverClientY < hoverMiddleY) return;
+        if (hoverClientY < hoverMiddleY + 30) return;
 
         // 向上拖动
         if (hoverClientY > hoverMiddleY + 30) {
@@ -56,9 +56,14 @@ const Drop: FC<DropProps> = ({
   );
 
   return (
-    <div ref={drop} className={compInfo.name + ' ' + 'dropDemo'}>
-      <div ref={currentCompRef} className="compInfo-container">
-        {compInfo.description}
+    <div ref={drop} className={compInfo.name}>
+      <div ref={currentCompRef}>
+        <div
+          style={{ height: `${compInfo.clientHeight}px` }}
+          className="dropDemo"
+        >
+          {compInfo.description}
+        </div>
       </div>
     </div>
   );

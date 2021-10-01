@@ -13,6 +13,7 @@ export interface ComJsonType {
   description: string;
   properties?: unknown;
   pic?: string;
+  clientHeight?: number;
 }
 const { Panel } = Collapse;
 

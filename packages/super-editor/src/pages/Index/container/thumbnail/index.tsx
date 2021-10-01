@@ -35,13 +35,12 @@ const Thumbnail: FC<ThumbnailProps> = ({
 
         if (monitor.didDrop()) {
           currentCacheCopm.splice(occupantsIndex, 1, item);
-          eventbus.emit('watchDragState', false);
           //@ts-ignore
           document.querySelector('#preview').contentWindow.postMessage(currentCacheCopm, '*');
-        } else {
-          eventbus.emit('watchDragState', true);
+        } else { 
           currentCacheCopm.splice(occupantsIndex, 1);
         }
+        eventbus.emit('watchDragState', false);
         setCurrentCacheCopm([...currentCacheCopm]);
       },
     },
