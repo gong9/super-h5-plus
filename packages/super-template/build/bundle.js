@@ -25,7 +25,11 @@ var schema = {
 var Button = function Button() {
   return /*#__PURE__*/React.createElement("div", {
     className: "super-btn"
-  }, /*#__PURE__*/React.createElement("button", null, "\u6309\u94AE"));
+  }, /*#__PURE__*/React.createElement("button", {
+    onClick: function onClick() {
+      console.log(111);
+    }
+  }, "\u6309\u94AE"));
 };
 
 Button.schema = schema;

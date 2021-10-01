@@ -35,7 +35,7 @@ const Drop: FC<DropProps> = ({
           (clientOffset as XYCoord).y - hoverBoundingRect.top;
 
         // 向下拖动
-        if (hoverClientY < hoverMiddleY + 30) return;
+        if (hoverClientY < hoverMiddleY) return;
 
         // 向上拖动
         if (hoverClientY > hoverMiddleY + 30) {
@@ -43,11 +43,13 @@ const Drop: FC<DropProps> = ({
           const occupantsIndex = currentCacheCopm.findIndex(
             (compItem) => compItem.name === 'occupants',
           );
+          
           currentCacheCopm.splice(occupantsIndex, 1);
           currentCacheCopm.splice(index, 0, {
             name: 'occupants',
             description: '放到这里',
           });
+          
           setCurrentCacheCopm([...currentCacheCopm]);
         }
       },

@@ -40,7 +40,7 @@ const Thumbnail: FC<ThumbnailProps> = ({
         } else { 
           currentCacheCopm.splice(occupantsIndex, 1);
         }
-        eventbus.emit('watchDragState', false);
+        eventbus.emit('watchDragState', false);       
         setCurrentCacheCopm([...currentCacheCopm]);
       },
     },
@@ -52,7 +52,7 @@ const Thumbnail: FC<ThumbnailProps> = ({
    */
   useEffect(() => {
     if (isDragging) {
-      eventbus.emit('watchDragState', true);
+      eventbus.emit('watchDragState', true); 
       setCurrentCacheCopm([
         {
           name: 'occupants',

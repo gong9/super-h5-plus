@@ -16,9 +16,7 @@ const EditorContainer: FC<EditorContainerProps> = () => {
 
   useEffect(() => {
     window.addEventListener('message', ({ data }) => {
-      setCurrentCacheCopm(data);
-      console.log(data);
-      
+      setCurrentCacheCopm(data.currentCacheCopm);
     });
   }, []);
 

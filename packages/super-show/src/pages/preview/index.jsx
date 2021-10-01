@@ -17,7 +17,7 @@ const PreView = () => {
     for (let i = 0; i < contents.length; i++) {
       currentCacheCopm[i].clientHeight = contents[i].clientHeight;
     }
-    window.parent.postMessage(currentCacheCopm, "*");
+    window.parent.postMessage({ currentCacheCopm }, "*");
   }, [currentCacheCopm]);
 
   return (

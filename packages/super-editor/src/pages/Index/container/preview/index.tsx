@@ -31,18 +31,20 @@ const PreView: FC<PreViewProps> = ({
       <div
         className={classnames('clone-iframe', { hide: !showCloneViewState })}
       >
-        {currentCacheCopm.map((compInfo, index) => {
-          return (
-            // 因为会存在渲染相同组件的情况，故这里放弃diff优化
-            <Drop
-              currentCacheCopm={currentCacheCopm}
-              setCurrentCacheCopm={setCurrentCacheCopm}
-              key={++compNum}
-              index={index}
-              compInfo={compInfo}
-            />
-          );
-        })}
+        {Array.isArray(currentCacheCopm) &&
+          currentCacheCopm.length > 0 &&
+          currentCacheCopm.map((compInfo, index) => {
+            return (
+              // 因为会存在渲染相同组件的情况，故这里放弃diff优化
+              <Drop
+                currentCacheCopm={currentCacheCopm}
+                setCurrentCacheCopm={setCurrentCacheCopm}
+                key={++compNum}
+                index={index}
+                compInfo={compInfo}
+              />
+            );
+          })}
       </div>
 
       <iframe
