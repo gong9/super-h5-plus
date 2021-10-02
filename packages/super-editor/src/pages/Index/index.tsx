@@ -8,16 +8,26 @@ import { schameMap } from 'super-template/build/bundle';
 import EditorLeft from './container/editorLeft';
 import EditorTop from './container/editorTop';
 import PreView from './container/preview';
+import EditorConfigForm from './container/editorConfigForm';
 
 import './index.less';
 interface EditorContainerProps {}
 
 const EditorContainer: FC<EditorContainerProps> = () => {
   const [currentCacheCopm, setCurrentCacheCopm] = useState([]);
+  const [compActiveIndex, setCompActiveIndex] = useState<number | null>(null);
 
+  /** 监听iframe 传过来的postmessage */
   useEffect(() => {
     window.addEventListener('message', ({ data }) => {
-      setCurrentCacheCopm(data.currentCacheCopm);
+      const { currentCacheCopm, compActiveIndex } = data;
+
+      // notice postmessage 监听事件多次调用问题
+      if (compActiveIndex !== undefined) {
+        setCompActiveIndex(compActiveIndex);
+      } else if (currentCacheCopm && !('compActiveIndex' in data)) {
+        setCurrentCacheCopm(currentCacheCopm);
+      }
     });
   }, []);
 
@@ -48,7 +58,11 @@ const EditorContainer: FC<EditorContainerProps> = () => {
             setCurrentCacheCopm={setCurrentCacheCopm}
           />
         </div>
-        <div className="editor-body-right">配置区</div>
+        <div className="editor-body-right">
+          {compActiveIndex !== null && (
+            <EditorConfigForm compSchema={currentCacheCopm[compActiveIndex]} />
+          )}
+        </div>
       </div>
     </div>
   );

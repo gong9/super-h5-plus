@@ -11,14 +11,14 @@ var schema = {
   "compId": "Button",
   "description": "按钮组件",
   "pic": "https://img12.360buyimg.com/ddimg/jfs/t1/206278/28/8822/54487/615539f5E4f4cb5ab/49773bdc89799e5c.png",
-  "properties": {
-    "type": "object",
-    "properties": {
-      "text": {
-        "type": "string",
-        "format": "text"
-      }
-    }
+  "config": [{
+    "name": "src",
+    "label": "请选择颜色",
+    "type": "string",
+    "format": "color"
+  }],
+  "defaultConfig": {
+    "src": "https://img11.360buyimg.com/ddimg/jfs/t1/88856/35/18313/1750299/6156d725E08d3adea/c3a6bd820350230c.png"
   }
 };
 
@@ -39,14 +39,14 @@ var schema$1 = {
   "compId": "Dialog",
   "description": "弹窗组件",
   "pic": "https://img11.360buyimg.com/ddimg/jfs/t1/97204/11/18195/74905/61553bb8E9ba92a0d/8d59c5db08ccd759.png",
-  "properties": {
-    "type": "object",
-    "properties": {
-      "text": {
-        "type": "string",
-        "format": "text"
-      }
-    }
+  "config": [{
+    "name": "dialogText",
+    "label": "请填写弹框文案",
+    "type": "string",
+    "format": "text"
+  }],
+  "defaultConfig": {
+    "dialogText": "默认弹框文案"
   }
 };
 
@@ -63,14 +63,14 @@ var schema$2 = {
   "compId": "Image",
   "description": "图片组件",
   "pic": "https://img11.360buyimg.com/ddimg/jfs/t1/88856/35/18313/1750299/6156d725E08d3adea/c3a6bd820350230c.png",
-  "properties": {
-    "type": "object",
-    "properties": {
-      "src": {
-        "type": "string",
-        "format": "image"
-      }
-    }
+  "config": [{
+    "name": "src",
+    "label": "请填写图片地址",
+    "type": "string",
+    "format": "text"
+  }],
+  "defaultConfig": {
+    "src": "https://img11.360buyimg.com/ddimg/jfs/t1/88856/35/18313/1750299/6156d725E08d3adea/c3a6bd820350230c.png"
   }
 };
 

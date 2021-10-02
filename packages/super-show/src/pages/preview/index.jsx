@@ -12,7 +12,7 @@ const PreView = () => {
     window.addEventListener("message", ({ data }) => {
       setCurrentCacheCopm(data.currentCacheCopm);
     });
-  });
+  }, []);
 
   /** 计算每个容器的实际高度，返回编辑器 */
   useEffect(() => {
@@ -23,12 +23,21 @@ const PreView = () => {
     window.parent.postMessage({ currentCacheCopm }, "*");
   }, [currentCacheCopm]);
 
+  /** 获取处于操作态的组件 */
+  const getCurrentOperation = (compIndex) => {
+    window.parent.postMessage({ compActiveIndex: compIndex }, "*");
+  };
+
   return (
     <div className="preview">
       {currentCacheCopm.length > 0 &&
-        currentCacheCopm.map((comp) => {
+        currentCacheCopm.map((comp, index) => {
           return (
-            <div className="content" key={id++}>
+            <div
+              className="content"
+              key={id++}
+              onClick={() => getCurrentOperation(index)}
+            >
               {renderJson(comp)}
             </div>
           );
