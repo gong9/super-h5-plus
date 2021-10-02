@@ -11,6 +11,7 @@ import {
 interface EditorConfigFormProps {
   compSchema: any;
 }
+
 // 思路：根据comp schema 渲染配置表单
 const EditorConfigForm: FC<EditorConfigFormProps> = ({ compSchema }) => {
   const { config, defaultConfig } = compSchema;
@@ -20,7 +21,6 @@ const EditorConfigForm: FC<EditorConfigFormProps> = ({ compSchema }) => {
     config.length > 0 && (
       <Form
         name="basic"
-        // labelCol={{ span: 8 }}
         wrapperCol={{ span: 16 }}
         initialValues={{ remember: true }}
         // onFinish={onFinish}

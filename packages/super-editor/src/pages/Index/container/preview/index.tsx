@@ -52,7 +52,7 @@ const PreView: FC<PreViewProps> = ({
       <iframe
         src="http://localhost:3000/#/preview"
         width="100%"
-        scrolling="no"
+        scrolling="yes"
         frameBorder="0"
         id="preview"
       />

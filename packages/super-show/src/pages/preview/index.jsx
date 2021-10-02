@@ -10,7 +10,10 @@ const PreView = () => {
   /** 获取编辑器中操作中预览组件信息 */
   useEffect(() => {
     window.addEventListener("message", ({ data }) => {
-      setCurrentCacheCopm(data.currentCacheCopm);
+      const { currentCacheCopm } = data;
+      if (currentCacheCopm) {
+        setCurrentCacheCopm(data.currentCacheCopm);
+      }
     });
   }, []);
 
