@@ -16,17 +16,20 @@ interface EditorContainerProps {}
 const EditorContainer: FC<EditorContainerProps> = () => {
   const [currentCacheCopm, setCurrentCacheCopm] = useState([]);
   const [compActiveIndex, setCompActiveIndex] = useState<number | null>(null);
+  const [iframeScrollY, setIframeScrollY] = useState(0);
 
   /** 监听iframe 传过来的postmessage */
   useEffect(() => {
     window.addEventListener('message', ({ data }) => {
-      const { currentCacheCopm, compActiveIndex } = data;
+      const { currentCacheCopm, compActiveIndex, scrollY } = data;
 
       // notice postmessage 监听事件多次调用问题
       if (compActiveIndex !== undefined) {
         setCompActiveIndex(compActiveIndex);
       } else if (currentCacheCopm && !('compActiveIndex' in data)) {
         setCurrentCacheCopm(currentCacheCopm);
+      } else if (scrollY === 0 || scrollY) {
+        setIframeScrollY(scrollY);
       }
     });
   }, []);
@@ -56,6 +59,7 @@ const EditorContainer: FC<EditorContainerProps> = () => {
           <PreView
             currentCacheCopm={currentCacheCopm}
             setCurrentCacheCopm={setCurrentCacheCopm}
+            iframeScrollY={iframeScrollY}
           />
         </div>
         <div className="editor-body-right">

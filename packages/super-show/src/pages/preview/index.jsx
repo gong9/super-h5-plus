@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import renderJson from "../../util/jsonRender";
+import { debounce } from "../../util/tool";
 import "./index.css";
 
 let id = 0;
@@ -15,6 +16,16 @@ const PreView = () => {
         setCurrentCacheCopm(data.currentCacheCopm);
       }
     });
+
+    window.addEventListener(
+      "scroll",
+      debounce(() => {
+        // 获取页面Y轴的滚动距离
+        const scrollY =
+          document.documentElement.scrollTop || document.body.scrollTop;
+        window.parent.postMessage({ scrollY }, "*");
+      })
+    );
   }, []);
 
   /** 计算每个容器的实际高度，返回编辑器 */

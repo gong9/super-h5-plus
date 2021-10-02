@@ -9,6 +9,7 @@ import './index.less';
 interface PreViewProps {
   currentCacheCopm: ComJsonType[];
   setCurrentCacheCopm: Function;
+  iframeScrollY: number;
 }
 
 let compNum = 0; // 记录组件数量
@@ -16,8 +17,14 @@ let compNum = 0; // 记录组件数量
 const PreView: FC<PreViewProps> = ({
   currentCacheCopm,
   setCurrentCacheCopm,
+  iframeScrollY,
 }) => {
   const [showCloneViewState, changeShowCloneViewState] = useState(false);
+
+  useEffect(() => {
+    //@ts-ignore
+    document.querySelector('.clone-iframe').style.top = `${-iframeScrollY}px`;
+  }, [iframeScrollY]);
 
   const [, drop] = useDrop({
     accept: 'comp',
@@ -29,7 +36,13 @@ const PreView: FC<PreViewProps> = ({
   });
 
   return (
-    <div className="preview" ref={drop}>
+    <div
+      className="preview"
+      ref={drop}
+      onScroll={() => {
+        console.log(111);
+      }}
+    >
       <div
         className={classnames('clone-iframe', { hide: !showCloneViewState })}
       >
