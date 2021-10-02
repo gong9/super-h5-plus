@@ -18,6 +18,7 @@ const Thumbnail: FC<ThumbnailProps> = ({
   currentCacheCopm,
   setCurrentCacheCopm,
 }) => {
+  
   const [{ isDragging }, drag] = useDrag(
     {
       item: compInfo,
@@ -36,7 +37,7 @@ const Thumbnail: FC<ThumbnailProps> = ({
         if (monitor.didDrop()) {
           currentCacheCopm.splice(occupantsIndex, 1, item);
           //@ts-ignore
-          document.querySelector('#preview').contentWindow.postMessage(currentCacheCopm, '*');
+          document.querySelector('#preview').contentWindow.postMessage({ currentCacheCopm }, '*');
         } else { 
           currentCacheCopm.splice(occupantsIndex, 1);
         }

@@ -6,6 +6,7 @@ import Image from './Components/Image/index'
 
 import getSchma from './util/getSchema'
 
+// 组合组件物料信息
 const schameMap = [
     getSchma(Button),
     getSchma(Dialog),

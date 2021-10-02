@@ -24,12 +24,7 @@ const EditorLeft: FC<EditorLeftProps> = ({
 }) => {
   return (
     <div className="editor-left">
-      <Collapse
-        className="Collapse"
-        defaultActiveKey={['1']}
-        // onChange={callback}
-        ghost={true}
-      >
+      <Collapse className="Collapse" ghost={true}>
         {schameMap.map((item: any) => {
           return (
             <Panel header={item.name} key={item.name}>

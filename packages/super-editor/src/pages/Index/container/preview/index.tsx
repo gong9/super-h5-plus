@@ -11,7 +11,8 @@ interface PreViewProps {
   setCurrentCacheCopm: Function;
 }
 
-let compNum = 0;
+let compNum = 0; // 记录组件数量
+
 const PreView: FC<PreViewProps> = ({
   currentCacheCopm,
   setCurrentCacheCopm,
@@ -22,6 +23,7 @@ const PreView: FC<PreViewProps> = ({
     accept: 'comp',
   });
 
+  // 订阅[监听]是否开始拖拽，以便于判断是否展示irame浮层
   eventbus.on('watchDragState', (dragState: boolean) => {
     changeShowCloneViewState(dragState);
   });
@@ -53,7 +55,7 @@ const PreView: FC<PreViewProps> = ({
         scrolling="no"
         frameBorder="0"
         id="preview"
-      ></iframe>
+      />
     </div>
   );
 };

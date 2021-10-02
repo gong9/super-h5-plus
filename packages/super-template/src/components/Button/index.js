@@ -1,6 +1,7 @@
 import React from "react";
 import "./index.less";
 import schema from "./schema";
+
 const Button = () => {
   return (
     <div className="super-btn">
@@ -14,5 +15,6 @@ const Button = () => {
     </div>
   );
 };
+
 Button.schema = schema;
 export default Button;

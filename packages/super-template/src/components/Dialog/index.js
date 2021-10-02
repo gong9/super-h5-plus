@@ -1,6 +1,7 @@
 import React from "react";
 import schema from "./schema";
 import './index.less'
+
 const Dialog = () => {
   return (
     <div className="super-dialog">

@@ -34,10 +34,6 @@ const Drop: FC<DropProps> = ({
         const hoverClientY =
           (clientOffset as XYCoord).y - hoverBoundingRect.top;
 
-        // 向下拖动
-        if (hoverClientY < hoverMiddleY) return;
-
-        // 向上拖动
         if (hoverClientY > hoverMiddleY + 30) {
           // 移动占位标签
           const occupantsIndex = currentCacheCopm.findIndex(

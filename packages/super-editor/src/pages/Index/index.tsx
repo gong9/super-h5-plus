@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from 'react';
+import { FC, useEffect, useState, useCallback } from 'react';
 import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
 
@@ -6,6 +6,7 @@ import { HTML5Backend } from 'react-dnd-html5-backend';
 import { schameMap } from 'super-template/build/bundle';
 
 import EditorLeft from './container/editorLeft';
+import EditorTop from './container/editorTop';
 import PreView from './container/preview';
 
 import './index.less';
@@ -20,9 +21,19 @@ const EditorContainer: FC<EditorContainerProps> = () => {
     });
   }, []);
 
+  /** 预览  */
+  const openPreView = useCallback(() => {
+    // 实际逻辑，应该是先把组件配置信息保存到后端。在预览项目启动时取出渲染
+    window.location.href = `http://localhost:3000/?compInfo=${JSON.stringify(
+      currentCacheCopm,
+    )}#/view`;
+  }, [currentCacheCopm]);
+
   return (
     <div className="editor-container">
-      <div className="editor-top">可视化编辑器——superH5</div>
+      <div className="editor-top">
+        <EditorTop openPreView={openPreView} />
+      </div>
       <div className="editor-body">
         <div className="editor-body-left">
           <EditorLeft
@@ -52,4 +63,5 @@ const Main = () => {
     </div>
   );
 };
+
 export default Main;
