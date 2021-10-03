@@ -6,7 +6,7 @@
 import { FC, useState, useEffect } from 'react';
 import { SketchPicker, ColorResult } from 'react-color';
 import classnames from 'classnames';
-import { color2rgba, rgbaObj2string, checkIn } from '@/util/util';
+import { color2rgba, rgbaObj2string } from '@/util/util';
 
 import './index.less';
 
