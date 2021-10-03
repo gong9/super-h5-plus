@@ -24,7 +24,7 @@ var schema = {
   }],
   "defaultConfig": {
     "btnText": "这是一个按钮",
-    "bgcColor": "#666667"
+    "bgcColor": "#333333"
   }
 };
 

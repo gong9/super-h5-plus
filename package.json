@@ -12,7 +12,8 @@
     "start": "npm-run-all --parallel dev:*",
     "dev:editor": "cd ./packages/super-editor && npm run start",
     "dev:template": "cd ./packages/super-template && npm run build",
-    "dev:show": "cd ./packages/super-show && npm run start"
+    "dev:show": "cd ./packages/super-show && npm run start",
+    "dev:server": "cd ./packages/super-server && npm run start"
   },
   "dependencies": {
     "@babel/core": "^7.15.5",
