@@ -244,7 +244,7 @@ a:link {
   justify-content: center;
 }
 .super-image img {
-  width: 90%;
+  width: 100%;
   height: 200px;
   border-radius: 3px;
 }
@@ -270,14 +270,4 @@ a:link {
 }
 .super-dialog div {
   color: #fff;
-}
-.super-image {
-  display: flex;
-  width: 100%;
-  justify-content: center;
-}
-.super-image img {
-  width: 100%;
-  height: 200px;
-  border-radius: 3px;
 }

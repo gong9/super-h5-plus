@@ -36,7 +36,7 @@ const EditorContainer: FC<EditorContainerProps> = () => {
 
   /** 预览  */
   const openPreView = useCallback(() => {
-    // 实际逻辑，应该是先把组件配置信息保存到后端。在预览项目启动时取出渲染
+    // 实际逻辑，应该是先把组件配置信息保存到后端。在预览项目启动时取出渲染。但是我懒得再写一个后台了...
     window.location.href = `http://localhost:3000/?compInfo=${JSON.stringify(
       currentCacheCopm,
     )}#/view`;

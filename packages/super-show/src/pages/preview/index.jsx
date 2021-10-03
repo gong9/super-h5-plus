@@ -46,6 +46,7 @@ const PreView = () => {
     <div className="preview">
       {currentCacheCopm.length > 0 &&
         currentCacheCopm.map((comp, index) => {
+          // 同理 key 忽略diff优化
           return (
             <div
               className="content"

@@ -21,8 +21,10 @@
   },
   "dependencies": {
     "@ant-design/pro-layout": "^6.5.0",
+    "@types/react-color": "^3.0.5",
     "classnames": "^2.3.1",
     "react": "17.x",
+    "react-color": "^2.19.3",
     "react-dnd": "^14.0.4",
     "react-dnd-html5-backend": "^14.0.2",
     "react-dom": "17.x",
