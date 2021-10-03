@@ -1,11 +1,21 @@
 import { FC } from 'react';
 import { Button } from 'antd';
+import { saveSchema } from '@/server';
 import './index.less';
 interface EditorProps {
-  openPreView: any;
+  currentCacheCopm: any;
 }
 
-const Editor: FC<EditorProps> = ({ openPreView }) => {
+const Editor: FC<EditorProps> = ({ currentCacheCopm }) => {
+  const openPreView = async () => {
+    try {
+      await saveSchema({ currentCacheCopm });
+    } catch (error) {
+      console.error(error);
+    }
+    window.open('http://localhost:3000/#/view', '_blank');
+  };
+
   return (
     <div className="editor-top">
       {/* 先占个位置 */}

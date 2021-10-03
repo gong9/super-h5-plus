@@ -45,7 +45,7 @@ const EditorContainer: FC<EditorContainerProps> = () => {
   return (
     <div className="editor-container">
       <div className="editor-top">
-        <EditorTop openPreView={openPreView} />
+        <EditorTop currentCacheCopm={currentCacheCopm} />
       </div>
       <div className="editor-body">
         <div className="editor-body-left">

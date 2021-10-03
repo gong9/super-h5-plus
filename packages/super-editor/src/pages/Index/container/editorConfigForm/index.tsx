@@ -31,8 +31,7 @@ const EditorConfigForm: FC<EditorConfigFormProps> = ({
       ...compSchema,
       defaultConfig: values,
     };
-    console.log(currentCacheCopm);
-    
+
     document
       .querySelector('#preview')
       .contentWindow.postMessage({ currentCacheCopm }, '*');
@@ -44,10 +43,10 @@ const EditorConfigForm: FC<EditorConfigFormProps> = ({
         name="basic"
         wrapperCol={{ span: 16 }}
         initialValues={{ remember: true }}
-        onFinish={onFinish}
-        // onFinishFailed={onFinishFailed}
         autoComplete="off"
         initialValues={defaultConfig}
+        onFinish={onFinish}
+        // onFinishFailed={onFinishFailed}
       >
         {config.map(({ name, format, label }) => {
           let SuperFormItem: any;
@@ -72,6 +71,7 @@ const EditorConfigForm: FC<EditorConfigFormProps> = ({
           return (
             <Form.Item key={name} label={label} name={name}>
               {/* 这里antd的表单项会给自组件注入属性，下面函数式调用组件传参的方式不可使用 */}
+
               {/* {SuperFormItem({
                 defaultConfig: defaultConfig[name],
                 value,

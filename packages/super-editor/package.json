@@ -22,7 +22,9 @@
   "dependencies": {
     "@ant-design/pro-layout": "^6.5.0",
     "@types/react-color": "^3.0.5",
+    "axios": "^0.22.0",
     "classnames": "^2.3.1",
+    "qs": "^6.10.1",
     "react": "17.x",
     "react-color": "^2.19.3",
     "react-dnd": "^14.0.4",
