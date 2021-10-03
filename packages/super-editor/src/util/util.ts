@@ -28,7 +28,5 @@ export const color2rgba = (color: string, opacity) => {
 
 /** rgba对象转rgba字符串 */
 export const rgbaObj2string = (rgbaObj) => {
-  return `rgba( 
-    ${rgbaObj.r} ,${rgbaObj.g},${rgbaObj.b} ,${rgbaObj.a}
-    )`;
+  return `rgba(${rgbaObj.r},${rgbaObj.g},${rgbaObj.b},${rgbaObj.a})`;
 };

@@ -64,7 +64,12 @@ const EditorContainer: FC<EditorContainerProps> = () => {
         </div>
         <div className="editor-body-right">
           {compActiveIndex !== null && (
-            <EditorConfigForm compSchema={currentCacheCopm[compActiveIndex]} />
+            <EditorConfigForm
+              compSchema={currentCacheCopm[compActiveIndex]}
+              setCurrentCacheCopm={setCurrentCacheCopm}
+              currentCacheCopm={currentCacheCopm}
+              compActiveIndex={compActiveIndex}
+            />
           )}
         </div>
       </div>

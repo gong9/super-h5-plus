@@ -11,7 +11,8 @@ interface EditorLeftProps {
 export interface ComJsonType {
   name: string;
   description: string;
-  properties?: unknown;
+  config?: any;
+  defaultConfig?: any;
   pic?: string;
   clientHeight?: number;
 }

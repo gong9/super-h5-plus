@@ -1,8 +1,3 @@
-/**
- * 颜色选择
- * todo 未完善
- */
-
 import { FC, useState, useEffect } from 'react';
 import { SketchPicker, ColorResult } from 'react-color';
 import classnames from 'classnames';
@@ -10,9 +5,17 @@ import { color2rgba, rgbaObj2string } from '@/util/util';
 
 import './index.less';
 
-interface SuperColorProps {}
+interface SuperColorProps {
+  onChange: Function;
+  defaultConfig: string;
+}
 
-const SuperColor: FC<SuperColorProps> = () => {
+/**
+ * 颜色选择
+ * todo 有样式问题
+ */
+
+const SuperColor: FC<SuperColorProps> = ({ onChange, defaultConfig }) => {
   const [color, setColor] = useState<string>(() => color2rgba('000000', 1));
   const [hideSeletor, setHideSeletor] = useState(true);
 
@@ -29,9 +32,11 @@ const SuperColor: FC<SuperColorProps> = () => {
   }, []);
 
   const changeColor = (color: ColorResult) => {
+    onChange(rgbaObj2string(color.rgb));
     setColor(rgbaObj2string(color.rgb));
   };
 
+  /** 颜色选择器的隐藏逻辑 */
   const hideSeletorHandle = (e: any) => {
     let isTagetNode = document
       .querySelector('.sketch-picker')

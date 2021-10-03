@@ -12,24 +12,36 @@ var schema = {
   "description": "按钮组件",
   "pic": "https://img12.360buyimg.com/ddimg/jfs/t1/206278/28/8822/54487/615539f5E4f4cb5ab/49773bdc89799e5c.png",
   "config": [{
-    "name": "src",
-    "label": "请选择颜色",
+    "name": "bgcColor",
+    "label": "按钮颜色",
     "type": "string",
     "format": "color"
+  }, {
+    "name": "btnText",
+    "label": "按钮文案",
+    "type": "string",
+    "format": "text"
   }],
   "defaultConfig": {
-    "src": "https://img11.360buyimg.com/ddimg/jfs/t1/88856/35/18313/1750299/6156d725E08d3adea/c3a6bd820350230c.png"
+    "btnText": "这是一个按钮",
+    "bgcColor": "#666667"
   }
 };
 
-var Button = function Button() {
+var Button = function Button(_ref) {
+  var defaultConfig = _ref.defaultConfig;
+  var bgcColor = defaultConfig.bgcColor,
+      btnText = defaultConfig.btnText;
   return /*#__PURE__*/React.createElement("div", {
-    className: "super-btn"
+    className: "super-btn",
+    style: {
+      background: "".concat(bgcColor)
+    }
   }, /*#__PURE__*/React.createElement("button", {
     onClick: function onClick() {
       console.log(111);
     }
-  }, "\u6309\u94AE"));
+  }, btnText));
 };
 
 Button.schema = schema;

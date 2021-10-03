@@ -5,8 +5,8 @@ import * as template from "super-template/build/bundle";
  */
 
 const renderJson = (json) => {
-  const { compId } = json;
+  const { compId, defaultConfig } = json;
   const Comp = template[compId];
-  return <Comp />;
+  return <Comp defaultConfig={defaultConfig} />;
 };
 export default renderJson;

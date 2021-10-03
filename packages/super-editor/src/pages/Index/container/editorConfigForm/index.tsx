@@ -7,15 +7,36 @@ import {
   SuperText,
   SuperUpload,
 } from '../../../../components/compConfigForm';
+import { ComJsonType } from '../editorLeft';
 
 interface EditorConfigFormProps {
-  compSchema: any;
+  compSchema: ComJsonType;
+  currentCacheCopm: ComJsonType[];
+  setCurrentCacheCopm: Function;
+  compActiveIndex: number;
 }
 
 // 思路：根据comp schema 渲染配置表单
-const EditorConfigForm: FC<EditorConfigFormProps> = ({ compSchema }) => {
-  const { config, defaultConfig } = compSchema;
+const EditorConfigForm: FC<EditorConfigFormProps> = ({
+  compSchema,
+  currentCacheCopm,
+  compActiveIndex,
+}) => {
+  const { config, defaultConfig, name } = compSchema;
+  const onFinish = (values) => {
+    // 找到当前组件在所有组件中的索引
+    // 通知ifame更新组件信息
 
+    currentCacheCopm[compActiveIndex] = {
+      ...compSchema,
+      defaultConfig: values,
+    };
+    console.log(currentCacheCopm);
+    
+    document
+      .querySelector('#preview')
+      .contentWindow.postMessage({ currentCacheCopm }, '*');
+  };
   return (
     Array.isArray(config) &&
     config.length > 0 && (
@@ -23,12 +44,13 @@ const EditorConfigForm: FC<EditorConfigFormProps> = ({ compSchema }) => {
         name="basic"
         wrapperCol={{ span: 16 }}
         initialValues={{ remember: true }}
-        // onFinish={onFinish}
+        onFinish={onFinish}
         // onFinishFailed={onFinishFailed}
         autoComplete="off"
+        initialValues={defaultConfig}
       >
         {config.map(({ name, format, label }) => {
-          let SuperFormItem;
+          let SuperFormItem: any;
           switch (format) {
             case 'text':
               SuperFormItem = SuperText;
@@ -49,7 +71,12 @@ const EditorConfigForm: FC<EditorConfigFormProps> = ({ compSchema }) => {
 
           return (
             <Form.Item key={name} label={label} name={name}>
-              {SuperFormItem({ defaultConfig: defaultConfig[name] })}
+              {/* 这里antd的表单项会给自组件注入属性，下面函数式调用组件传参的方式不可使用 */}
+              {/* {SuperFormItem({
+                defaultConfig: defaultConfig[name],
+                value,
+              })} */}
+              <SuperFormItem defaultConfig={defaultConfig[name]} />
             </Form.Item>
           );
         })}
