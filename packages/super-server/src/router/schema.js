@@ -33,12 +33,11 @@ router.post('/save', function (req, res) {
 
 // 预览 读取组件信息
 router.get('/getSchema', (req, res) => {
-    let resData
+    let resData = {}
     try {
         resData = JSON.parse(fs.readFileSync(path.join(__dirname, '../../temp/db.txt'), 'utf8'))
     } catch (err) {
         console.error(err)
-        resData = {}
     }
     res.json({
         ...resMesSuccess,
@@ -57,15 +56,23 @@ router.get('/download', (req, res) => {
 // 上传 组件信息
 router.post('/upload', upload.single('file'), function (req, res) {
     const compFileBuffer = req.file.buffer
+    let resData = {}
     try {
         fs.writeFileSync(path.join(__dirname, '../../temp/db.txt'), compFileBuffer)
+        resData = JSON.parse(fs.readFileSync(path.join(__dirname, '../../temp/db.txt'), 'utf8'))
     } catch (error) {
         res.json({
             ...resMesFail,
             message: error
         })
     }
-    res.json(resMesSuccess)
+
+    res.json({
+        ...resMesSuccess,
+        data: {
+            resData
+        }
+    })
 });
 
 

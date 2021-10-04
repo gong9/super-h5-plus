@@ -19,13 +19,16 @@ const props = {
     }
     if (info.file.status === 'done') {
       message.success(`${info.file.name} file uploaded successfully`);
+       //@ts-ignore
+      document.querySelector('#preview').contentWindow.postMessage({ currentCacheCopm:info.file.response?.data?.resData?.currentCacheCopm }, '*');
+      
     } else if (info.file.status === 'error') {
       message.error(`${info.file.name} file upload failed.`);
     }
   },
 };
 
-const Editor: FC<EditorProps> = ({ currentCacheCopm }) => {
+const Editor: FC<EditorProps> = ({ currentCacheCopm}) => {
   const [isModalVisible, setIsModalVisible] = useState(false);
 
   const openPreView = async (type: number) => {

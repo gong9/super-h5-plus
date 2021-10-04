@@ -19,5 +19,6 @@ lerna-debug.log
 note.md
 
 
-packages/super-server/db.txt
 packages/super-template/build
+packages/super-template/build/main.css
+packages/super-server/temp/db.txt
