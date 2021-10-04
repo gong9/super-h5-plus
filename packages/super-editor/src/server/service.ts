@@ -29,7 +29,7 @@ request.interceptors.request.use(
  * 响应拦截器
  */
 request.interceptors.response.use(
-  (response: { config: any; data: any }) => {
+  (response: { config: any; data: any }) => {  
     const config = response.config;
     let data = response.data;
 

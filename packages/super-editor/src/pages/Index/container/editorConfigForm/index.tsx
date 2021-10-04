@@ -16,7 +16,6 @@ interface EditorConfigFormProps {
   compActiveIndex: number;
 }
 
-// 思路：根据comp schema 渲染配置表单
 const EditorConfigForm: FC<EditorConfigFormProps> = ({
   compSchema,
   currentCacheCopm,
@@ -26,7 +25,6 @@ const EditorConfigForm: FC<EditorConfigFormProps> = ({
   const onFinish = (values) => {
     // 找到当前组件在所有组件中的索引
     // 通知ifame更新组件信息
-
     currentCacheCopm[compActiveIndex] = {
       ...compSchema,
       defaultConfig: values,

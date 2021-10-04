@@ -10,3 +10,8 @@ export const saveSchema = (params = {}) => {
   const url = apiServeUrl.qa.concat('/schema/save');
   return request.post(url, { params });
 };
+
+export const downloadSchema = () => {
+  const url = apiServeUrl.qa.concat('/schema/download');
+  return request.get(url);
+};

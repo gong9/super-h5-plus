@@ -1,19 +1,57 @@
-import { FC } from 'react';
-import { Button } from 'antd';
-import { saveSchema } from '@/server';
+import { FC, useState } from 'react';
+import { Button, Modal, Upload, message } from 'antd';
+import { UploadOutlined } from '@ant-design/icons';
+import { saveSchema, downloadSchema } from '@/server';
 import './index.less';
 interface EditorProps {
   currentCacheCopm: any;
 }
+// 文件上传props
+const props = {
+  name: 'file',
+  action: 'http://localhost:8888/schema/upload',
+  headers: {
+    authorization: 'authorization-text',
+  },
+  onChange(info: any) {
+    if (info.file.status !== 'uploading') {
+      console.log(info.file, info.fileList);
+    }
+    if (info.file.status === 'done') {
+      message.success(`${info.file.name} file uploaded successfully`);
+    } else if (info.file.status === 'error') {
+      message.error(`${info.file.name} file upload failed.`);
+    }
+  },
+};
 
 const Editor: FC<EditorProps> = ({ currentCacheCopm }) => {
-  const openPreView = async () => {
+  const [isModalVisible, setIsModalVisible] = useState(false);
+
+  const openPreView = async (type: number) => {
     try {
       await saveSchema({ currentCacheCopm });
     } catch (error) {
       console.error(error);
     }
-    window.open('http://localhost:3000/#/view', '_blank');
+    type === 1 && window.open('http://localhost:3000/#/view', '_blank');
+  };
+
+  const download = async () => {
+    window.open('http://localhost:8888/db.txt')
+    // try {
+    //   await downloadSchema();
+    // } catch (error) {
+    //   console.error(error);
+    // }
+  };
+
+  const showModal = () => {
+    setIsModalVisible(true);
+  };
+
+  const closeModal = () => {
+    setIsModalVisible(false);
   };
 
   return (
@@ -22,18 +60,28 @@ const Editor: FC<EditorProps> = ({ currentCacheCopm }) => {
       <div></div>
       <div className="editor-top-title">可视化编辑器——superH5</div>
       <div className="editor-top-operation">
-        <Button onClick={openPreView} type="primary" className="btn">
+        <Button onClick={() => openPreView(1)} type="primary" className="btn">
           预览
         </Button>
-        <Button type="primary" className="btn">
+        <Button type="primary" className="btn" onClick={() => openPreView(2)}>
           保存
         </Button>
-        <Button type="primary" className="btn">
+        <Button type="primary" className="btn" onClick={showModal}>
           导入
         </Button>
-        <Button type="primary" className="btn">
+        <Button type="primary" className="btn" onClick={download}>
           下载
         </Button>
+        <Modal
+          title="导入组件json"
+          visible={isModalVisible}
+          onOk={closeModal}
+          onCancel={closeModal}
+        >
+          <Upload {...props}>
+            <Button icon={<UploadOutlined />}>Click to Upload</Button>
+          </Upload>
+        </Modal>
       </div>
     </div>
   );
