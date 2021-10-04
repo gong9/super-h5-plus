@@ -13,11 +13,12 @@ const resMesSuccess = {
     data: {},
     message: 'success'
 }
+
 const resMesFail = {
     code: -1
 }
 
-// 预览 保存组件信息
+/** 预览 保存组件信息 */
 router.post('/save', function (req, res) {
     const schemaStr = JSON.stringify(req.body.params);
 
@@ -31,7 +32,7 @@ router.post('/save', function (req, res) {
     })
 });
 
-// 预览 读取组件信息
+/** 预览 读取组件信息 */
 router.get('/getSchema', (req, res) => {
     let resData = {}
     try {
@@ -47,13 +48,13 @@ router.get('/getSchema', (req, res) => {
     })
 })
 
-// 下载 组件信息
+/** 下载 组件信息 */
 router.get('/download', (req, res) => {
     const filepath = path.join(__dirname, '../../temp/db.txt');
     res.download(filepath);
 })
 
-// 上传 组件信息
+/** 上传 组件信息 */
 router.post('/upload', upload.single('file'), function (req, res) {
     const compFileBuffer = req.file.buffer
     let resData = {}

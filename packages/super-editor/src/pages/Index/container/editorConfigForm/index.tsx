@@ -24,7 +24,7 @@ const EditorConfigForm: FC<EditorConfigFormProps> = ({
   const { config, defaultConfig, name } = compSchema;
   const onFinish = (values) => {
     // 找到当前组件在所有组件中的索引
-    // 通知ifame更新组件信息
+    // 通知iframe更新组件信息
     currentCacheCopm[compActiveIndex] = {
       ...compSchema,
       defaultConfig: values,
@@ -61,7 +61,6 @@ const EditorConfigForm: FC<EditorConfigFormProps> = ({
             case 'upload':
               SuperFormItem = SuperUpload;
               break;
-
             default:
               break;
           }

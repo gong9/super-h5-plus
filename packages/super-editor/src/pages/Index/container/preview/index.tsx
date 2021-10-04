@@ -30,7 +30,7 @@ const PreView: FC<PreViewProps> = ({
     accept: 'comp',
   });
 
-  // 订阅[监听]是否开始拖拽，以便于判断是否展示irame浮层
+  // 订阅[监听]是否开始拖拽，以便于判断是否展示iframe浮层
   eventbus.on('watchDragState', (dragState: boolean) => {
     changeShowCloneViewState(dragState);
   });

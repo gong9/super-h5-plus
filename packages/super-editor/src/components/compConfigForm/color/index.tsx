@@ -10,11 +10,6 @@ interface SuperColorProps {
   defaultConfig: string;
 }
 
-/**
- * 颜色选择
- * todo 有样式问题
- */
-
 const SuperColor: FC<SuperColorProps> = ({ onChange, defaultConfig }) => {
   const [color, setColor] = useState<string>(() => color2rgba('000000', 1));
   const [hideSeletor, setHideSeletor] = useState(true);
