@@ -1,5 +1,10 @@
 # super-h5 【可视化搭建 h5】
 
+## 关于依赖安装
+可先cd 到packages下的个个子项目 运行 npm i
+然后退回项目根目录 yarn
+再yarn start
+
 由三个项目组成
 
 - super-editor 【编辑器】
