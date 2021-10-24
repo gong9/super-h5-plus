@@ -1,4 +1,6 @@
 import React from "react";
+import { openDialog } from "../../util/openDialog";
+
 import "./index.less";
 import schema from "./schema";
 
@@ -8,7 +10,7 @@ const Button = ({ defaultConfig }) => {
     <div className="super-btn" style={{ background: `${bgcColor}` }}>
       <button
         onClick={() => {
-          console.log(111);
+          openDialog()
         }}
       >
         {btnText}

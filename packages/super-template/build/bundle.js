@@ -5,6 +5,14 @@ Object.defineProperty(exports, '__esModule', { value: true });
 function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'default' in ex) ? ex['default'] : ex; }
 
 var React = _interopDefault(require('react'));
+var reactDom = require('react-dom');
+
+var dialogContent = document.createElement("div");
+var body = document.body;
+body.appendChild(dialogContent);
+var openDialog = function openDialog() {
+  console.log(reactDom.render( /*#__PURE__*/React.createElement(React.Fragment, null, "nihao"), dialogContent));
+};
 
 var schema = {
   "name": "button",
@@ -39,7 +47,7 @@ var Button = function Button(_ref) {
     }
   }, /*#__PURE__*/React.createElement("button", {
     onClick: function onClick() {
-      console.log(111);
+      openDialog();
     }
   }, btnText));
 };
@@ -62,10 +70,19 @@ var schema$1 = {
   }
 };
 
+/**
+ * 这里的弹框状态不再由使用它的父组件控制
+ * !notice 预览态
+ */
+
 var Dialog = function Dialog() {
   return /*#__PURE__*/React.createElement("div", {
     className: "super-dialog"
-  }, /*#__PURE__*/React.createElement("div", null, "\u8FD9\u662F\u4E00\u4E2A\u5F39\u6846\u7EC4\u4EF6"));
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "outside"
+  }), /*#__PURE__*/React.createElement("div", {
+    className: "inside"
+  }, /*#__PURE__*/React.createElement("div", null, "\u8FD9\u662F\u4E00\u4E2A\u5F39\u6846")));
 };
 
 Dialog.schema = schema$1;

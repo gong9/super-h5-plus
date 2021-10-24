@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useLayoutEffect, useState } from "react";
 import renderJson from "../../util/jsonRender";
 import { debounce } from "../../util/tool";
 import "./index.css";
@@ -29,7 +29,7 @@ const PreView = () => {
   }, []);
 
   /** 计算每个容器的实际高度，返回编辑器 */
-  useEffect(() => {
+  useLayoutEffect(() => {
     const contents = document.querySelectorAll(".content");
     for (let i = 0; i < contents.length; i++) {
       currentCacheCopm[i].clientHeight = contents[i].clientHeight;
