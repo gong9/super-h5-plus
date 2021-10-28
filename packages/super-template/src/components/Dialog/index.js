@@ -10,9 +10,10 @@ import "./index.less";
 const Dialog = () => {
   return (
     <div className="super-dialog">
-      <div className="outside"></div>
+      <div className="outside" />
       <div className="inside">
         <div>这是一个弹框</div>
+        <button>关闭</button>
       </div>
     </div>
   );

@@ -82,7 +82,7 @@ var Dialog = function Dialog() {
     className: "outside"
   }), /*#__PURE__*/React.createElement("div", {
     className: "inside"
-  }, /*#__PURE__*/React.createElement("div", null, "\u8FD9\u662F\u4E00\u4E2A\u5F39\u6846")));
+  }, /*#__PURE__*/React.createElement("div", null, "\u8FD9\u662F\u4E00\u4E2A\u5F39\u6846"), /*#__PURE__*/React.createElement("button", null, "\u5173\u95ED")));
 };
 
 Dialog.schema = schema$1;
