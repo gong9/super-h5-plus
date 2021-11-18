@@ -10,10 +10,15 @@
   },
   "scripts": {
     "start": "npm-run-all --parallel dev:*",
+    "install-all":"npm-run-all --parallel install:*",
     "dev:editor": "cd ./packages/super-editor && npm run start",
     "dev:template": "cd ./packages/super-template && npm run build",
     "dev:show": "cd ./packages/super-show && npm run start",
-    "dev:server": "cd ./packages/super-server && npm run start"
+    "dev:server": "cd ./packages/super-server && npm run start",
+    "install:editor": "cd ./packages/super-editor && npm i",
+    "install:template": "cd ./packages/super-template && npm i",
+    "install:show": "cd ./packages/super-show && npm i",
+    "install:server": "cd ./packages/super-server && npm i"
   },
   "dependencies": {
     "@babel/core": "^7.15.5",

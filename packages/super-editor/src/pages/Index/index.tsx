@@ -1,10 +1,13 @@
-import { FC, useEffect, useState, useCallback } from 'react';
+import { FC, useEffect, useState } from 'react';
 import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
 
+// 错误处理
+import '../../global/handleError';
+import ErrorBoundary from '../../global/ErrorBoundary';
+
 //@ts-ignore
 import { schameMap } from 'super-template/build/bundle';
-
 import EditorLeft from './container/editorLeft';
 import EditorTop from './container/editorTop';
 import PreView from './container/preview';
@@ -33,14 +36,6 @@ const EditorContainer: FC<EditorContainerProps> = () => {
       }
     });
   }, []);
-
-  /** 预览  */
-  const openPreView = useCallback(() => {
-    // 实际逻辑，应该是先把组件配置信息保存到后端。在预览项目启动时取出渲染。但是我懒得再写一个后台了...
-    window.location.href = `http://localhost:3000/?compInfo=${JSON.stringify(
-      currentCacheCopm,
-    )}#/view`;
-  }, [currentCacheCopm]);
 
   return (
     <div className="editor-container">
@@ -80,9 +75,11 @@ const EditorContainer: FC<EditorContainerProps> = () => {
 const Main = () => {
   return (
     <div className="main">
-      <DndProvider backend={HTML5Backend}>
-        <EditorContainer />
-      </DndProvider>
+      <ErrorBoundary>
+        <DndProvider backend={HTML5Backend}>
+          <EditorContainer />
+        </DndProvider>
+      </ErrorBoundary>
     </div>
   );
 };

@@ -48,9 +48,6 @@ const Thumbnail: FC<ThumbnailProps> = ({
     [currentCacheCopm, setCurrentCacheCopm],
   );
 
-  /**
-   * todo:  此处代码需要优化
-   */
   useEffect(() => {
     if (isDragging) {
       eventbus.emit('watchDragState', true); 
