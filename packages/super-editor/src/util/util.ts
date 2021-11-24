@@ -30,3 +30,14 @@ export const color2rgba = (color: string, opacity) => {
 export const rgbaObj2string = (rgbaObj) => {
   return `rgba(${rgbaObj.r},${rgbaObj.g},${rgbaObj.b},${rgbaObj.a})`;
 };
+
+/** 时间分片 */
+export const timeSlice = (handleFun) => {
+  const slice = () => {
+    setTimeout(() => {
+      handleFun();
+      slice();
+    }, 0);
+  };
+  slice();
+};
