@@ -11,14 +11,13 @@ interface ThumbnailProps {
 }
 
 /**
- * 组件缩略图
+ * @file 组件缩略图
  */
 const Thumbnail: FC<ThumbnailProps> = ({
   compInfo,
   currentCacheCopm,
   setCurrentCacheCopm,
 }) => {
-  
   const [{ isDragging }, drag] = useDrag(
     {
       item: compInfo,
@@ -37,11 +36,13 @@ const Thumbnail: FC<ThumbnailProps> = ({
         if (monitor.didDrop()) {
           currentCacheCopm.splice(occupantsIndex, 1, item);
           //@ts-ignore
-          document.querySelector('#preview').contentWindow.postMessage({ currentCacheCopm }, '*');
-        } else { 
+          document
+            .querySelector('#preview')
+            .contentWindow.postMessage({ currentCacheCopm }, '*');
+        } else {
           currentCacheCopm.splice(occupantsIndex, 1);
         }
-        eventbus.emit('watchDragState', false);       
+        eventbus.emit('watchDragState', false);
         setCurrentCacheCopm([...currentCacheCopm]);
       },
     },
@@ -50,7 +51,7 @@ const Thumbnail: FC<ThumbnailProps> = ({
 
   useEffect(() => {
     if (isDragging) {
-      eventbus.emit('watchDragState', true); 
+      eventbus.emit('watchDragState', true);
       setCurrentCacheCopm([
         {
           name: 'occupants',

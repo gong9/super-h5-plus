@@ -72,17 +72,26 @@ var schema$1 = {
 
 /**
  * 这里的弹框状态不再由使用它的父组件控制
+ * 思考：复用还是不复用？
+ * 场景存在不存在弹框嵌套的问题
  * !notice 预览态
  */
 
 var Dialog = function Dialog() {
+  /** 
+   * 
+   */
+  var handleClose = function handleClose() {};
+
   return /*#__PURE__*/React.createElement("div", {
     className: "super-dialog"
   }, /*#__PURE__*/React.createElement("div", {
     className: "outside"
   }), /*#__PURE__*/React.createElement("div", {
     className: "inside"
-  }, /*#__PURE__*/React.createElement("div", null, "\u8FD9\u662F\u4E00\u4E2A\u5F39\u6846"), /*#__PURE__*/React.createElement("button", null, "\u5173\u95ED")));
+  }, /*#__PURE__*/React.createElement("div", null, "\u8FD9\u662F\u4E00\u4E2A\u5F39\u6846"), /*#__PURE__*/React.createElement("button", {
+    onClick: handleClose
+  }, "\u5173\u95ED")));
 };
 
 Dialog.schema = schema$1;

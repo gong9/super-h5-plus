@@ -17,20 +17,19 @@ import './index.less';
 interface EditorContainerProps {}
 
 const EditorContainer: FC<EditorContainerProps> = () => {
-  const [currentCacheCopm, setCurrentCacheCopm] = useState([]);
-  const [compActiveIndex, setCompActiveIndex] = useState<number | null>(null);
-  const [iframeScrollY, setIframeScrollY] = useState(0);
+  const [currentCacheCopm, setCurrentCacheCopm] = useState([]); // 画布中的组件
+  const [compActiveIndex, setCompActiveIndex] = useState<number | null>(null); // 画布中当前正选中的组件
+  const [iframeScrollY, setIframeScrollY] = useState(0); // iframe中被卷去的部分
 
-  /** 监听iframe 传过来的postmessage */
+  //监听iframe 传过来的postmessage
   useEffect(() => {
     window.addEventListener('message', ({ data }) => {
       const { currentCacheCopm, compActiveIndex, scrollY } = data;
 
-      // notice postmessage 监听事件多次调用问题
-      if (compActiveIndex !== undefined) {
+      if (compActiveIndex) {
         setCompActiveIndex(compActiveIndex);
       } else if (currentCacheCopm && !('compActiveIndex' in data)) {
-        setCurrentCacheCopm(currentCacheCopm);
+        setCurrentCacheCopm(currentCacheCopm); // 注入实际高度
       } else if (scrollY === 0 || scrollY) {
         setIframeScrollY(scrollY);
       }
@@ -45,7 +44,7 @@ const EditorContainer: FC<EditorContainerProps> = () => {
       <div className="editor-body">
         <div className="editor-body-left">
           <EditorLeft
-            schameMap={schameMap}
+            schameMap={schameMap || []}
             setCurrentCacheCopm={setCurrentCacheCopm}
             currentCacheCopm={currentCacheCopm}
           />

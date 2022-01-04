@@ -22,30 +22,25 @@ const Drop: FC<DropProps> = ({
     {
       accept: 'comp',
       hover: (_, monitor) => {
-        // 屏幕上矩形范围
         //@ts-ignore
-        const hoverBoundingRect = currentCompRef.current!.getBoundingClientRect();
-        // 中点垂直坐标
+        const hoverBoundingRect = currentCompRef.current!.getBoundingClientRect(); // 屏幕上矩形范围
         const hoverMiddleY =
-          (hoverBoundingRect.bottom - hoverBoundingRect.top) / 2;
-        // 鼠标位置
-        const clientOffset = monitor.getClientOffset();
-        // 距顶部距离
+          (hoverBoundingRect.bottom - hoverBoundingRect.top) / 2; // 中点垂直坐标
+        const clientOffset = monitor.getClientOffset(); // 鼠标位置
         const hoverClientY =
-          (clientOffset as XYCoord).y - hoverBoundingRect.top;
+          (clientOffset as XYCoord).y - hoverBoundingRect.top; // 距顶部距离
 
         if (hoverClientY > hoverMiddleY + 30) {
-          // 移动占位标签
           const occupantsIndex = currentCacheCopm.findIndex(
             (compItem) => compItem.name === 'occupants',
           );
-          
+
           currentCacheCopm.splice(occupantsIndex, 1);
           currentCacheCopm.splice(index, 0, {
             name: 'occupants',
             description: '放到这里',
           });
-          
+
           setCurrentCacheCopm([...currentCacheCopm]);
         }
       },
