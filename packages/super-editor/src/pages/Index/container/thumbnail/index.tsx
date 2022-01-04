@@ -30,18 +30,16 @@ const Thumbnail: FC<ThumbnailProps> = ({
           (compItem) => compItem.name === 'occupants',
         );
 
-        // 1. 如果成功放入目标容器，则以真正的comp替代占位元素
-        // 2. 没有放置目标容器中且拖拽结束，删除占位元素
-
         if (monitor.didDrop()) {
+          // 如果成功放入目标容器，则以真正的comp替代占位元素
           currentCacheCopm.splice(occupantsIndex, 1, item);
-          //@ts-ignore
-          document
-            .querySelector('#preview')
-            .contentWindow.postMessage({ currentCacheCopm }, '*');
+          //@ts-ignore 更新预览项目组件
+          document.querySelector('#preview').contentWindow.postMessage({ currentCacheCopm }, '*');
         } else {
+          // 没有放置目标容器中且拖拽结束，删除占位元素
           currentCacheCopm.splice(occupantsIndex, 1);
         }
+        // 关闭画布涂层
         eventbus.emit('watchDragState', false);
         setCurrentCacheCopm([...currentCacheCopm]);
       },
@@ -51,6 +49,7 @@ const Thumbnail: FC<ThumbnailProps> = ({
 
   useEffect(() => {
     if (isDragging) {
+      // 开启画布涂层
       eventbus.emit('watchDragState', true);
       setCurrentCacheCopm([
         {

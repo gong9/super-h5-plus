@@ -10,7 +10,9 @@ interface DropProps {
   setCurrentCacheCopm: Function;
   currentCacheCopm: ComJsonType[];
 }
-
+/**
+ * @file 画布涂层
+ */
 const Drop: FC<DropProps> = ({
   compInfo,
   index,
@@ -23,12 +25,12 @@ const Drop: FC<DropProps> = ({
       accept: 'comp',
       hover: (_, monitor) => {
         //@ts-ignore
-        const hoverBoundingRect = currentCompRef.current!.getBoundingClientRect(); // 屏幕上矩形范围
+        const hoverBoundingRect = currentCompRef.current.getBoundingClientRect();
         const hoverMiddleY =
-          (hoverBoundingRect.bottom - hoverBoundingRect.top) / 2; // 中点垂直坐标
-        const clientOffset = monitor.getClientOffset(); // 鼠标位置
+          (hoverBoundingRect.bottom - hoverBoundingRect.top) / 2;
+        const clientOffset = monitor.getClientOffset();
         const hoverClientY =
-          (clientOffset as XYCoord).y - hoverBoundingRect.top; // 距顶部距离
+          (clientOffset as XYCoord).y - hoverBoundingRect.top;
 
         if (hoverClientY > hoverMiddleY + 30) {
           const occupantsIndex = currentCacheCopm.findIndex(
