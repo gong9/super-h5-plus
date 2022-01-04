@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useLayoutEffect, useState } from "react";
 import renderJson from "../../util/jsonRender";
 import { debounce } from "../../util/tool";
 import "./index.css";
@@ -6,21 +6,21 @@ import "./index.css";
 let id = 0;
 
 const PreView = () => {
-  const [currentCacheCopm, setCurrentCacheCopm] = useState([]);
+  const [currentCacheCopm, setCurrentCacheCopm] = useState([]); // all component
 
-  /** 获取编辑器中操作中预览组件信息 */
+  // 获取编辑器中操作中预览组件信息
   useEffect(() => {
+    // 获取全部组件
     window.addEventListener("message", ({ data }) => {
       const { currentCacheCopm } = data;
       if (currentCacheCopm) {
         setCurrentCacheCopm(data.currentCacheCopm);
       }
     });
-
+    // 返给编辑器页面Y轴的滚动距离
     window.addEventListener(
       "scroll",
       debounce(() => {
-        // 获取页面Y轴的滚动距离
         const scrollY =
           document.documentElement.scrollTop || document.body.scrollTop;
         window.parent.postMessage({ scrollY }, "*");
@@ -28,8 +28,8 @@ const PreView = () => {
     );
   }, []);
 
-  /** 计算每个容器的实际高度，返回编辑器 */
-  useEffect(() => {
+  // 计算每个容器的实际高度，返回编辑器
+  useLayoutEffect(() => {
     const contents = document.querySelectorAll(".content");
     for (let i = 0; i < contents.length; i++) {
       currentCacheCopm[i].clientHeight = contents[i].clientHeight;
@@ -37,7 +37,10 @@ const PreView = () => {
     window.parent.postMessage({ currentCacheCopm }, "*");
   }, [currentCacheCopm]);
 
-  /** 获取处于操作态的组件 */
+  /**
+   * 获取处于操作态的组件
+   * @param {numbe} compIndex
+   */
   const getCurrentOperation = (compIndex) => {
     window.parent.postMessage({ compActiveIndex: compIndex }, "*");
   };

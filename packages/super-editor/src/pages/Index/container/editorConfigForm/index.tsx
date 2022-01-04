@@ -23,8 +23,7 @@ const EditorConfigForm: FC<EditorConfigFormProps> = ({
 }) => {
   const { config, defaultConfig, name } = compSchema;
   const onFinish = (values) => {
-    // 找到当前组件在所有组件中的索引
-    // 通知iframe更新组件信息
+    // 找到当前组件在所有组件中的索引&通知iframe更新组件信息
     currentCacheCopm[compActiveIndex] = {
       ...compSchema,
       defaultConfig: values,
@@ -44,7 +43,6 @@ const EditorConfigForm: FC<EditorConfigFormProps> = ({
         autoComplete="off"
         initialValues={defaultConfig}
         onFinish={onFinish}
-        // onFinishFailed={onFinishFailed}
       >
         {config.map(({ name, format, label }) => {
           let SuperFormItem: any;

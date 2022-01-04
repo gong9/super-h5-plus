@@ -1,3 +1,4 @@
+//@ts-nocheck
 import axios, { AxiosInstance } from 'axios';
 import qs from 'qs';
 // todo 关于axios的异常处理  绝大部分的异常处理处理都是相同的故写一个兜底即可

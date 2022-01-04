@@ -22,6 +22,13 @@ const PreView: FC<PreViewProps> = ({
   const [showCloneViewState, changeShowCloneViewState] = useState(false);
 
   useEffect(() => {
+    // 订阅[监听]是否开始拖拽，以便于判断是否展示iframe浮层
+    eventbus.on('watchDragState', (dragState: boolean) => {
+      changeShowCloneViewState(dragState);
+    });
+  }, []);
+
+  useEffect(() => {
     //@ts-ignore
     document.querySelector('.clone-iframe').style.top = `${-iframeScrollY}px`;
   }, [iframeScrollY]);
@@ -30,36 +37,23 @@ const PreView: FC<PreViewProps> = ({
     accept: 'comp',
   });
 
-  // 订阅[监听]是否开始拖拽，以便于判断是否展示iframe浮层
-  eventbus.on('watchDragState', (dragState: boolean) => {
-    changeShowCloneViewState(dragState);
-  });
-
   return (
-    <div
-      className="preview"
-      ref={drop}
-      onScroll={() => {
-        console.log(111);
-      }}
-    >
+    <div className="preview" ref={drop}>
       <div
         className={classnames('clone-iframe', { hide: !showCloneViewState })}
       >
-        {Array.isArray(currentCacheCopm) &&
-          currentCacheCopm.length > 0 &&
-          currentCacheCopm.map((compInfo, index) => {
-            return (
-              // 因为会存在渲染相同组件的情况，故这里放弃diff优化
-              <Drop
-                currentCacheCopm={currentCacheCopm}
-                setCurrentCacheCopm={setCurrentCacheCopm}
-                key={++compNum}
-                index={index}
-                compInfo={compInfo}
-              />
-            );
-          })}
+        {currentCacheCopm.map((compInfo, index) => {
+          return (
+            // 因为会存在渲染相同组件的情况，故这里放弃diff优化
+            <Drop
+              currentCacheCopm={currentCacheCopm}
+              setCurrentCacheCopm={setCurrentCacheCopm}
+              key={++compNum}
+              index={index}
+              compInfo={compInfo}
+            />
+          );
+        })}
       </div>
 
       <iframe

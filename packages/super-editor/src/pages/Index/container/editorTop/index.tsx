@@ -40,13 +40,9 @@ const Editor: FC<EditorProps> = ({ currentCacheCopm}) => {
     type === 1 && window.open('http://localhost:3000/#/view', '_blank');
   };
 
+  /** 该功能暂时未完善 */
   const download = async () => {
     window.open('http://localhost:8888/db.txt')
-    // try {
-    //   await downloadSchema();
-    // } catch (error) {
-    //   console.error(error);
-    // }
   };
 
   const showModal = () => {
