@@ -11,8 +11,8 @@ class EventEmitter {
 
   /**
    * 订阅
-   * @param {*} eventname
-   * @param {*} fn
+   * @param {string} eventname
+   * @param {object} fn
    */
   on = (name, fn) => {
     this.cache[name] = fn;
@@ -20,7 +20,7 @@ class EventEmitter {
 
   /**
    * 发布
-   * @param {*} eventname
+   * @param {string} eventname
    * @param  {...any} args
    */
   emit = (name, ...args) => {

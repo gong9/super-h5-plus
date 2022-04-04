@@ -39,9 +39,6 @@ const PreView: FC<PreViewProps> = ({
     <div
       className="preview"
       ref={drop}
-      onScroll={() => {
-        console.log(111);
-      }}
     >
       <div
         className={classnames('clone-iframe', { hide: !showCloneViewState })}
