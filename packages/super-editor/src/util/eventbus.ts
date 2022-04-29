@@ -1,9 +1,4 @@
 //@ts-nocheck
-/**
- * 事件总线
- * 利用发布订阅处理非关联组件之间通信问题
- */
-
 class EventEmitter {
   constructor() {
     this.cache = {};
@@ -27,6 +22,11 @@ class EventEmitter {
     if (this.cache[name]) this.cache[name](...args);
   };
 
+  /**
+   * 
+   * @param name 
+   * @param fn 
+   */
   off = (name, fn) => {
     let tasks = this.cache[name];
     if (tasks) {

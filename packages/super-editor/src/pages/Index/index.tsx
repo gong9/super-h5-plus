@@ -22,13 +22,9 @@ const EditorContainer: FC<EditorContainerProps> = () => {
   const [iframeScrollY, setIframeScrollY] = useState(0);
 
   useEffect(() => {
-    /**
-     * 监听iframe 传过来的postmessage
-     */
-
+    // 监听iframe 传过来的postmessage
     window.addEventListener('message', ({ data }) => {
       const { currentCacheCopm, compActiveIndex, scrollY } = data;
-
       // notice postmessage 监听事件多次调用问题
       if (compActiveIndex !== undefined) {
         setCompActiveIndex(compActiveIndex);
@@ -43,7 +39,6 @@ const EditorContainer: FC<EditorContainerProps> = () => {
   return (
     <div className="editor-container">
       <div className="editor-top">
-        {' '}
         <EditorTop currentCacheCopm={currentCacheCopm} />
       </div>
       <div className="editor-body">

@@ -20,7 +20,6 @@ request.interceptors.request.use(
   async (config: any) => {
     // set token
     // if (!config.headers['user-token']) {}
-
     return config;
   },
   (error: any) => Promise.reject(error),
@@ -34,7 +33,6 @@ request.interceptors.response.use(
     const config = response.config;
     let data = response.data;
 
-    /** 如果不是json格式, 不处理 */
     if (config.responseType !== 'json') {
       return Promise.resolve(data);
     }
