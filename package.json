@@ -10,7 +10,7 @@
   },
   "scripts": {
     "start": "npm-run-all --parallel dev:*",
-    "install-all":"npm-run-all --parallel install:*",
+    "install-all": "npm-run-all --parallel install:*",
     "dev:editor": "cd ./packages/super-editor && npm run start",
     "dev:template": "cd ./packages/super-template && npm run build",
     "dev:show": "cd ./packages/super-show && npm run start",
@@ -21,6 +21,7 @@
     "install:server": "cd ./packages/super-server && npm i"
   },
   "dependencies": {
+    "@ant-design/icons": "^4.7.0",
     "@babel/core": "^7.15.5",
     "@babel/plugin-transform-runtime": "^7.15.0",
     "@babel/preset-env": "^7.15.6",
