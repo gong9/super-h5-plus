@@ -4,10 +4,10 @@
 
 本项目不再维护 [相关抽离请查看]
 
-相关包 [https://github.com/gong9/lego-monorapo]
-编辑器 [https://github.com/gong9/super-h5-editor]
-后台相关 [https://github.com/gong9/lego-server]
-react-h5 展示项目暂未抽离 [可先用此项目show]
+- 相关包 [https://github.com/gong9/lego-monorapo]
+- 编辑器 [https://github.com/gong9/super-h5-editor]
+- 后台相关 [https://github.com/gong9/lego-server]
+- react-h5 展示项目暂未抽离 [可先用此项目show]
 
 启动
 - 开启 编辑器
